@@ -1,6 +1,19 @@
-node default {
-  file { '/root/README':
+node slave1.puppet {
+  Package { ensure => 'installed' }
+  $packages = [ 'http', 'php' ]
+  package { $packages: }
+  
+  service { 'httpd': ensure => running, enable => true, }
+  
+  file { '/root/README': ensure => absent, }
+  file { '/etc/httpd/conf.d/01-demosite-static.conf':
     ensure => file,
-    content => 'Hello, world',
-  }
+    source => '/vagrant/web/apache_conf/01-demosite-static.conf',
+    replace => true,
+      } 
+  file { '/var/www/01-demosite-static/index.html':
+    ensure => file,
+    source => '/vagrant/web/01-demosite-static/index.html',
+    replace => true,
+      } 
 }
