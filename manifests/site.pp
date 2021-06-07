@@ -7,7 +7,7 @@ node slave1.puppet {
   
   file { '/root/README': ensure => absent, }
   file { '/etc/httpd/conf.d/01-demosite-static.conf':
-    notify  => Service['httpd']
+    notify  => Service['httpd'],
     ensure => file,
     source => '/vagrant/web/apache_conf/01-demosite-static.conf',
     replace => true,
