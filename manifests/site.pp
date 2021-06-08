@@ -5,10 +5,10 @@ node master.puppet {
   listen_port => 80,
   proxy       => 'http://192.168.4.11:80',
   }
-#  nginx::resource::server { 'localhost':
-#  listen_port => 81,
-#  proxy       => 'http://192.168.4.12:80',
-#  }
+  nginx::resource::server { '127.0.0.1':
+  listen_port => 81,
+  proxy       => 'http://192.168.4.12:80',
+  }
 }
 
 node slave1.puppet {
