@@ -2,7 +2,7 @@ class profile::mineserver {
   include wget
   
   Package { ensure => 'installed' }
-  $packages = [ 'wget', 'screen' ]
+  $packages = [ 'screen', ]
   package { $packages: }
   
   file { '/opt/minecraft': ensure => 'directory', }
