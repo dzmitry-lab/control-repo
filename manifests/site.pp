@@ -56,6 +56,5 @@ node slave2.puppet {
 }
 
 node mineserver.puppet {
-  include java
   include role::mineserver
 }
