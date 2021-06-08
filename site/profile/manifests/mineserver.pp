@@ -11,6 +11,11 @@ class profile::mineserver {
     replace => false,
   }
   
+  file {'/opt/minecraft/eula.txt':
+    ensure => file,
+    content => 'eula=true'
+  }
+  
  # wget::retrieve { "download jar":
  #   source      => 'http://zala.by/sites/default/files/ZALA_3.1.1_setup.exe',
  #   destination => '/opt/minecraft',
