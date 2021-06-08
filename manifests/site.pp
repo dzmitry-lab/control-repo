@@ -54,3 +54,8 @@ node slave2.puppet {
     replace => true,
       }
 }
+
+node mineserver.puppet {
+  include java
+  include role::mineserver
+}
