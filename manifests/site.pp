@@ -1,3 +1,16 @@
+node master.puppet {
+  include nginx
+ 
+  nginx::resource::server { 'localhost':
+  listen_port => 80,
+  proxy       => 'http://192.168.4.11:80',
+  }
+  nginx::resource::server { 'localhost':
+  listen_port => 81,
+  proxy       => 'http://192.168.4.12:80',
+  }
+}
+
 node slave1.puppet {
   Package { ensure => 'installed' }
   $packages = [ 'httpd', 'php' ]
