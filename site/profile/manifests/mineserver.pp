@@ -11,11 +11,11 @@ class profile::mineserver {
     replace => false,
   }
   
-  wget::retrieve { "download jar":
-    source      => 'http://zala.by/sites/default/files/ZALA_3.1.1_setup.exe',
-    destination => '/opt/minecraft',
-    timeout     => 5,
-    verbose     => true,
-  }
-  include wget
+ # wget::retrieve { "download jar":
+ #   source      => 'http://zala.by/sites/default/files/ZALA_3.1.1_setup.exe',
+ #   destination => '/opt/minecraft',
+ #   timeout     => 5,
+ #   verbose     => true,
+ # }
+ # include wget
 }
