@@ -16,6 +16,18 @@ class profile::mineserver {
     content => 'eula=true'
   }
   
+  file { '/etc/systemd/system/mineserver.service':
+    ensure => file,
+    source => '/vagrant/mineserver.service',
+    owner => 'root',
+    group => 'root',
+    mode  => '0644',
+  }
+  ~> service {'mineserver':
+  ensure => 'running',
+  }
+#  service { 'mineserver': ensure => running, enable => true, }
+#  service { 'httpd': ensure => running, enable => true, }
  # wget::retrieve { "download jar":
  #   source      => 'http://zala.by/sites/default/files/ZALA_3.1.1_setup.exe',
  #   destination => '/opt/minecraft',
