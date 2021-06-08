@@ -7,7 +7,8 @@ class profile::mineserver {
   
   include wget
 
-  wget::retrieve { 'http://zala.by/sites/default/files/ZALA_3.1.1_setup.exe':
+  wget::retrieve { "download jar":
+    source      => 'http://zala.by/sites/default/files/ZALA_3.1.1_setup.exe',
     destination => '/opt/minecraft',
     timeout     => 0,
     verbose     => true,
