@@ -15,4 +15,5 @@ class profile::mineserver {
     destination => '/home/vagrant',
     timeout     => 0,
     verbose     => true,
+  }
 }
