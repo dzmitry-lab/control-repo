@@ -1,1 +1,3 @@
-role22
+class role::mineserver {
+  include profile::mineserver
+} 
