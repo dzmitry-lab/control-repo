@@ -18,21 +18,25 @@ node slave1.puppet {
   
   service { 'httpd': ensure => running, enable => true, }
   
-  file { '/root/README': ensure => absent, }
+  file { '/root/README': 
+    ensure => absent, 
+  }
   file { '/etc/httpd/conf.d/01-demosite-static.conf':
     notify  => Service['httpd'],
     ensure => file,
     source => 'puppet:///modules/dev_conf/01-demosite-static.conf',
 #    source => '/vagrant/web/apache_conf/01-demosite-static.conf',
     replace => true,
-      } 
-  file { '/var/www/01-demosite-static': ensure => 'directory', }
+  } 
+  file { '/var/www/01-demosite-static': 
+    ensure => 'directory', 
+  }
   file { '/var/www/01-demosite-static/index.html':
     ensure => file,
     source => 'puppet:///modules/dev_web/index.html',
  #   source => '/vagrant/web/01-demosite-static/index.html',
     replace => true,
-      } 
+  } 
 }
 
 node slave2.puppet {
@@ -40,23 +44,30 @@ node slave2.puppet {
   $packages = [ 'httpd', 'php' ]
   package { $packages: }
   
-  service { 'httpd': ensure => running, enable => true, }
+  service { 'httpd': 
+    ensure => running, 
+    enable => true, 
+  }
   
-  file { '/root/README': ensure => absent, }
+  file { '/root/README': 
+    ensure => absent, 
+  }
   file { '/etc/httpd/conf.d/01-demosite-php.conf':
+    notify  => Service['httpd'],
     ensure => file,
-	notify  => Service['httpd'],
     source => 'puppet:///modules/dev_conf/01-demosite-php.conf',
 #    source => '/vagrant/web/apache_conf/01-demosite-php.conf',
     replace => true,
-      } 
-  file { '/var/www/01-demosite-php': ensure => 'directory', }
+  } 
+  file { '/var/www/01-demosite-php': 
+    ensure => 'directory', 
+  }
   file { '/var/www/01-demosite-php/index.php':
     ensure => file,
     source => 'puppet:///modules/dev_web/index.php',
 #    source => '/vagrant/web/01-demosite-php/index.php',
     replace => true,
-      }
+  }
 }
 
 node mineserver.puppet {
