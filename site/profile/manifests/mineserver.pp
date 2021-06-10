@@ -26,13 +26,4 @@ class profile::mineserver {
   ~> service {'mineserver':
   ensure => 'running',
   }
-#  service { 'mineserver': ensure => running, enable => true, }
-#  service { 'httpd': ensure => running, enable => true, }
- # wget::retrieve { "download jar":
- #   source      => 'http://zala.by/sites/default/files/ZALA_3.1.1_setup.exe',
- #   destination => '/opt/minecraft',
- #   timeout     => 5,
- #   verbose     => true,
- # }
- # include wget
 }
