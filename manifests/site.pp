@@ -25,7 +25,6 @@ node slave1.puppet {
     notify  => Service['httpd'],
     ensure => file,
     source => 'puppet:///modules/dev_conf/01-demosite-static.conf',
-#    source => '/vagrant/web/apache_conf/01-demosite-static.conf',
     replace => true,
   } 
   file { '/var/www/01-demosite-static': 
@@ -34,7 +33,6 @@ node slave1.puppet {
   file { '/var/www/01-demosite-static/index.html':
     ensure => file,
     source => 'puppet:///modules/dev_web/index.html',
- #   source => '/vagrant/web/01-demosite-static/index.html',
     replace => true,
   } 
 }
@@ -56,7 +54,6 @@ node slave2.puppet {
     notify  => Service['httpd'],
     ensure => file,
     source => 'puppet:///modules/dev_conf/01-demosite-php.conf',
-#    source => '/vagrant/web/apache_conf/01-demosite-php.conf',
     replace => true,
   } 
   file { '/var/www/01-demosite-php': 
@@ -65,7 +62,6 @@ node slave2.puppet {
   file { '/var/www/01-demosite-php/index.php':
     ensure => file,
     source => 'puppet:///modules/dev_web/index.php',
-#    source => '/vagrant/web/01-demosite-php/index.php',
     replace => true,
   }
 }
